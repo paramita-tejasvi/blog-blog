@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        {% if post.published_date %}
+            <div class="post">
+                <b><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></b>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <div class="date">
+                    <p>created: {{ post.created_date }}</p>
+                </div>
+                {% if post.comments.count %}
+                    {% if post.comments.count == 1 %}
+                        <a href="{% url 'post_detail' pk=post.pk %}">1 comment</a>
+                    {% else %}
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.comments.count }} comments</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
