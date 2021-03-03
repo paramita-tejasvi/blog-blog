@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from django.contrib.messages import constants as message_constants
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # messages things
 MESSAGE_LEVEL = message_constants.DEBUG
@@ -25,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@7x6(6vg)=f)u^wnixkg&ap(vzi#l%7uy@*#x75r%w%qk2-@qb'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

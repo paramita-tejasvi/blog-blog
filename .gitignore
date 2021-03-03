@@ -17,3 +17,7 @@ static/
 
 # pycharm
 .idea
+
+# environment
+.env
+
